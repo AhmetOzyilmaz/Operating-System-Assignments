@@ -1,0 +1,186 @@
+Begin Data Section
+0 0       # program counter
+1 0       # stack pointer
+2 0
+3 0
+4 0
+5 0
+6 0
+7 0
+8 0
+9 0
+10 0
+11 0
+12 0     # memory indexes 0-20 are reserved.
+13 0
+14 0
+15 0
+16 0
+17 0
+18 0
+19 0
+20 0      #  21 and 22 contains key and number N. 24 contains start index of the numbers to be searched
+21 100     # N=100            number N is given at memory index=21  
+22 171     # key=171         key is given at memory index=22
+23 0      # save the first occurence of key here. For this data it should be 106. If key not found assign -1 here
+24 60     #numbers to be searched starts at index 60
+25 0      #current Number To be looked
+26 0      
+27 0
+28 0
+29 0
+30 0
+31 0
+32 0
+33 0
+34 0
+35 0
+36 0
+37 0
+38 0
+39 0     # you may use locations 25 to 59 as registers
+40 0
+41 0
+42 0
+43 0
+44 0
+45 0
+46 0
+47 0
+48 0
+49 0
+50 0
+51 0
+52 0
+53 0
+54 0
+55 0
+56 0
+57 0
+58 0
+59 0
+60 293
+61 167
+62 316
+63 88
+64 132
+65 228
+66 286
+67 137
+68 298
+69 226
+70 169
+71 92
+72 310
+73 353
+74 221
+75 364
+76 91
+77 230
+78 96
+79 274
+80 356
+81 392
+82 176
+83 282
+84 212
+85 193
+86 352
+87 299
+88 194
+89 123
+90 140
+91 158
+92 297
+93 326
+94 224
+95 136
+96 244
+97 343
+98 267
+99 230
+100 305
+101 84
+102 340
+103 82
+104 168
+105 342
+106 112
+107 280
+108 273
+109 387
+110 305
+111 366
+112 191
+113 349
+114 276
+115 384
+116 229
+117 272
+118 324
+119 192
+120 386
+121 190
+122 183
+123 305
+124 398
+125 276
+126 71
+127 188
+128 173
+129 72
+130 171
+131 242
+132 88
+133 143
+134 246
+135 340
+136 118
+137 74
+138 245
+139 395
+140 326
+141 298
+142 358
+143 235
+144 341
+145 86
+146 97
+147 218
+148 119
+149 192
+150 87
+151 320
+152 148
+153 344
+154 280
+155 255
+156 347
+157 59
+158 97
+159 316
+End Data Section
+Begin Instruction Section
+#Write your linear search program here
+#you will search the value at address 22 which is 287. So your program should save adress number 106 to memory adress 23.
+#search between memory locations 60 and 159
+0 CPY 24 25  # current number to be looked set 
+1 JIF 21 15  # if numbers finish go to end
+2 CPY 22 26  # assigned key to 26
+3 CPYI 25 27 # copied current number to 27
+4 CPYI 25 28 # copied current number to 28
+5 SUBI 26 27 # mem[27]=cur_num-key
+6 SUBI 28 26 # mem[26]=key-cur_num
+7 JIF 27 12  #  if mem[27]<=0 goto X2
+8 ADD -1 21  # N--
+9 JIF 21 16 #if numbers finish goto end
+10 ADD 1 25   # cur_num++
+11 SET 2 0   # goto 2
+12 JIF 26 14 #if mem[28]<=0 goto X3
+13 SET 8 0
+14 CPY 25 23
+15 SET 17 0
+16  SET -1 23
+17 HLT
+End Instruction Section
+
